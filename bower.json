@@ -1,0 +1,25 @@
+{
+  "name": "wbh_server",
+  "description": "",
+  "main": "index.js",
+  "authors": [
+    "ziphrax <daverival@hotmail.com>"
+  ],
+  "license": "ISC",
+  "homepage": "",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "resolutions": {
+    "jquery": "1.9.1 - 2"
+  },
+  "dependencies": {
+    "jquery": "^3.0.0",
+    "bootstrap": "^3.3.6",
+    "knockout": "^3.4.0"
+  }
+}
