@@ -32,8 +32,8 @@ module.exports = {
           });
   },
   createPlayer: function(req,res){
-      req.body.salt = uuid.v4();;
-      var hash = bcrypt.hashSync( req.body.password + req.body.salt );
+      req.body.salt = bcrypt.genSaltSync();
+      var hash = bcrypt.hashSync( req.body.password, req.body.salt );
       req.body.hashed_pass = hash;
       delete req.body.password;
 
@@ -51,24 +51,31 @@ module.exports = {
       });
   },
   authenticate: function(req,res){
-      var email = req.query.email || req.params.email;
-      var password = req.query.password || req.params.password;
-      Player.find({email:email,password:password}).exec(function(err,docs){
+      var email_address = req.body.email_address;
+      var password = req.body.password;
+      Player.find({email_address:email_address}).exec(function(err,docs){
           if(err) {
               res.json({successful:false,message:err.message});
           }
+
           if(docs.length == 0){
               res.json({successful:false,message:"Invalid Credentials"});
-          }else {
-              var token = jwt.sign(docs[0],config.jwt_secret)
-              res.json({
-                successful:true,
-                message:"authenticated success",
-                doc:docs[0],
-                auth_token:token
-              });
-          }
+          } else {
+              var hash_passes = bcrypt.hashSync( req.body.password , docs[0].salt ) == docs[0].hashed_pass
 
+              if(hash_passes){
+                  var token = jwt.sign(docs[0],config.jwt_secret)
+                  res.json({
+                    successful:true,
+                    message:"authenticated success",
+                    doc:docs[0],
+                    auth_token:token
+                  });
+              } else {
+                  res.json({successful:false,message:"Invalid Credentials"});
+              }
+
+          }
       });
   }
 }

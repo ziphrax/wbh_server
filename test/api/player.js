@@ -44,7 +44,7 @@ describe('POST /api/players',function(){
 describe('POST /api/players/authenticate',function(){
     it('can login with valid credentials',function(done){
         var login_details = {
-            "email_address" : "a2187c4a-7fb9-40ce-ab0c-f62c75903d43@example.com",
+            "email_address" : "dd61d69b-e0ce-44d9-a434-2b6b9013427a@example.com",
             "password" : 'password1'
         }
         request(server)
@@ -72,8 +72,8 @@ describe('POST /api/players/authenticate',function(){
             .expect(200)
             .end(function(err,res){
                 should.not.exist(err);
-                res.body.successful.should.equal(true);
-                res.body.should.have.property('auth_token');
+                res.body.successful.should.equal(false);
+                res.body.should.not.have.property('auth_token');
                 done();
             });
     });
