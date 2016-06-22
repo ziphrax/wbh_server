@@ -61,7 +61,7 @@ module.exports = {
           if(docs.length == 0){
               res.json({successful:false,message:"Invalid Credentials"});
           } else {
-              var hash_passes = bcrypt.hashSync( req.body.password , docs[0].salt ) == docs[0].hashed_pass
+              var hash_passes = bcrypt.hashSync( req.body.password , docs[0].salt ) == docs[0].hashed_pass;
 
               if(hash_passes){
                   var token = jwt.sign(docs[0],config.jwt_secret)
