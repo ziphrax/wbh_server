@@ -18,7 +18,7 @@ router.use(function(req,res,next){
 
     } else {
         return res.status(403).send({
-            success: false,
+            successful: false,
             message: 'No token provided.'
         });
     }

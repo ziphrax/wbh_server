@@ -14,10 +14,7 @@ TESTS,TESTS,TESTS,TESTS
 
 and then
 
-add player registration
-add player login
-
-add api authentication using jwt to sign requests
+add jwt timeout
 add auto login if appropriate
 
 add planet view.
