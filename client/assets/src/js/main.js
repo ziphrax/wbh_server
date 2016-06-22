@@ -2,8 +2,10 @@ var wbh_ViewModel = function(){
   var self = this;
 
   self.currentPlayer = ko.observable();
+  self.newPlayer = ko.observable();
 
   self.init = function(){
+
     self.currentPlayer(new PlayerModel({
       name:"",
       email_address:"",
@@ -12,6 +14,16 @@ var wbh_ViewModel = function(){
       auth_token:"",
       password:""
     }));
+
+    self.newPlayer(new PlayerModel({
+      name:"",
+      email_address:"",
+      created_date:"",
+      last_login:"",
+      auth_token:"",
+      password:""
+    }));
+
   };
 
   self.init();
@@ -21,3 +33,8 @@ var wbh_ViewModel = function(){
 ko.applyBindings(new wbh_ViewModel());
 
 console.log('wbh_client started');
+
+$('#login-tabs a').click(function (e) {
+  e.preventDefault()
+  $(this).tab('show')
+})

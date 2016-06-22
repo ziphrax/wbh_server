@@ -10,7 +10,7 @@ mongoose.connect(config.mongoose_uri,function(err){
   if(err){
     console.log('Error Occured',err);
   } else {
-    console.log('Mongodb connected');
+    //console.log('Mongodb connected');
   }
 });
 
@@ -20,7 +20,7 @@ app.use('/api',api_routes);
 app.use(express.static('client'));
 
 var server = app.listen(port,function(){
-  console.log('wbh server running on port %s', port);
+  //console.log('wbh server running on port %s', port);
 });
 
 module.exports = server;

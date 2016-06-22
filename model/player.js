@@ -7,7 +7,8 @@ var PlayerSchema = new Schema({
   created_date : Date,
   last_login : Date,
   salt : String,
-  hashed_pass : String
+  hashed_pass : String,
+  password: String
 });
 
 module.exports = mongoose.model('Player',PlayerSchema);

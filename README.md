@@ -23,3 +23,5 @@ add auto login if appropriate
 add planet view.
 
 erm everything else. :-D
+
+secure the data returned from player, dont want to return the pass/salt or hash when returning
