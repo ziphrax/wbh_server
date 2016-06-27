@@ -4,6 +4,10 @@ var wbh_ViewModel = function(){
   self.currentPlayer = ko.observable();
   self.newPlayer = ko.observable();
 
+  self.login = function(){
+    
+  }
+
   self.init = function(){
 
     self.currentPlayer(new PlayerModel({

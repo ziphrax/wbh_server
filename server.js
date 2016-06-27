@@ -4,7 +4,8 @@ var express = require('express'),
     mongoose = require('mongoose'),
     config = require('./config'),
     api_routes = require('./api_routes'),
-    bodyParser = require('body-parser');
+    bodyParser = require('body-parser'),
+    morgan = require('morgan');
 
 mongoose.connect(config.mongoose_uri,function(err){
   if(err){
@@ -15,6 +16,7 @@ mongoose.connect(config.mongoose_uri,function(err){
 });
 
 app.use(bodyParser.json());
+//app.use(morgan('short'));
 
 app.use('/api',api_routes);
 app.use(express.static('client'));
